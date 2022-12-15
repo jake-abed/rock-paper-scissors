@@ -2,11 +2,14 @@
 //Establish global variables
 let playerScore = 0;
 let computerScore = 0;
-//The computer chooses it's option.
-const getComputerChoice = () => {
-        const RPS_ARRAY = ['rock', 'paper', 'scissors'];
-        return RPS_ARRAY[Math.floor(Math.random() * 3)];
+const RPS_ARRAY = ['rock', 'paper', 'scissors'];
+//Helper function to rest the game stats whenever a game is finished.
+const cleanUpGame = () => {
+        playerScore = 0;
+        computerScore = 0;
 }
+//The computer chooses it's option.
+const getComputerChoice = () => RPS_ARRAY[Math.floor(Math.random() * 3)];
 //The user chooses their option.
 const getPlayerChoice = () => prompt('Choose rock, paper, or scissors!').toLowerCase();
 //The game compares the choices. Rock beats scissors, paper beats rock, and scissors beats paper.
@@ -44,7 +47,7 @@ const reportWinner = (playerScore, computerScore) => {
         }
 }
 //Helper function to process a round
-const processRound = (roundResults, playerScore, computerScore) => {
+const processRound = (roundResults) => {
         if (roundResults == 'win') {
                 playerScore++;
                 console.log(`You ${roundResults}! You have ${playerScore} points and the computer has ${computerScore} points!`);
@@ -63,10 +66,12 @@ const game = () => {
                 let computerChoice = getComputerChoice();
                 let playerChoice = getPlayerChoice();
                 let roundResults = playRound(playerChoice, computerChoice);
-                processRound(roundResults, playerScore, computerScore);
+                processRound(roundResults);
                 if (roundResults == 'Incorrect input') {i--, console.log(`Please enter Rock, Paper, or Scissors. Not ${playerChoice}.`)};
         }
 //Report the winner.
         reportWinner(playerScore, computerScore);
-        console.log('Thank you for playing :)');
+        cleanUpGame();
+        return console.log('Thank you for playing :)');
+
 }
