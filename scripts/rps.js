@@ -32,32 +32,36 @@ const playRound = (getPlayerChoice, getComputerChoice) => {
                         if (getComputerChoice == 'scissors') return 'tie';
                         break;
                 default:
-                        return 'Incorrect input'
+                        return 'Incorrect input';
         }
 }
 //Helper function for reporting the winner.
 const reportWinner = (playerScore, computerScore) => {
+        const POINTS_MESSAGE = `Your score = ${playerScore}. Computer score = ${computerScore}.`;
         if (playerScore < computerScore) {
-                return console.log(`You lost! You have ${playerScore} points and the computer has ${computerScore} points!`)
+                return console.log(`You lost! ${POINTS_MESSAGE}`);
         }
         if (playerScore > computerScore) {
-                return console.log(`You won! You have ${playerScore} points and the computer has ${computerScore} points!`)
+                return console.log(`You won! ${POINTS_MESSAGE}`);
         } else {
-                return console.log(`It's a tie! You have ${playerScore} points and the computer has ${computerScore} points!`);
+                return console.log(`It's a tie! ${POINTS_MESSAGE}`);
         }
 }
 //Helper function to process a round
 const processRound = (roundResults) => {
         if (roundResults == 'win') {
                 playerScore++;
-                console.log(`You ${roundResults}! You have ${playerScore} points and the computer has ${computerScore} points!`);
+                let pointsMessage = `Your score = ${playerScore}. Computer score = ${computerScore}.`;
+                console.log(`You ${roundResults}! ${pointsMessage}`);
         }
         if (roundResults == 'lose') {
                 computerScore++;
-                console.log(`You ${roundResults}! You have ${playerScore} points and the computer has ${computerScore} points!`);
+                let pointsMessage = `Your score = ${playerScore}. Computer score = ${computerScore}.`;
+                console.log(`You ${roundResults}! ${pointsMessage}`);
         }
         if (roundResults == 'tie') {
-                console.log(`It's a ${roundResults}! You have ${playerScore} points and the computer has ${computerScore} points!`);
+                let pointsMessage = `Your score = ${playerScore}. Computer score = ${computerScore}.`;
+                console.log(`It's a ${roundResults}! ${pointsMessage}`);
         }
 }
 //Run the game 5 times
@@ -73,5 +77,4 @@ const game = () => {
         reportWinner(playerScore, computerScore);
         cleanUpGame();
         return console.log('Thank you for playing :)');
-
 }
