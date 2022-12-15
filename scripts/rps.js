@@ -3,16 +3,16 @@
 let playerScore = 0;
 let computerScore = 0;
 const RPS_ARRAY = ['rock', 'paper', 'scissors'];
-//Helper function to rest the game stats whenever a game is finished.
+//Helper function to reset the game upon completion.
 const cleanUpGame = () => {
         playerScore = 0;
         computerScore = 0;
 }
-//The computer chooses it's option.
+//Helper function to get the Computer Choice
 const getComputerChoice = () => RPS_ARRAY[Math.floor(Math.random() * 3)];
-//The user chooses their option.
+//Helper function to get the player choice via prompt
 const getPlayerChoice = () => prompt('Choose rock, paper, or scissors!').toLowerCase();
-//The game compares the choices. Rock beats scissors, paper beats rock, and scissors beats paper.
+//Helper function to play a round.
 const playRound = (getPlayerChoice, getComputerChoice) => {
         console.log(`The computer chose ${getComputerChoice}.`);
         switch (getPlayerChoice) {
