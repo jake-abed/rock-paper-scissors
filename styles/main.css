@@ -1,0 +1,23 @@
+* {
+	font-family : Helvetica, sans-serif;
+	background-color: black;
+	color: #0FFF50;
+}
+
+.rps-header {
+	text-align: center;
+	margin: 5vh auto;
+	white-space: nowrap;
+	overflow: hidden;
+	animation: type 3s steps(60, end);
+	width: min(95%, 500px);
+}
+
+@keyframes type {
+	from {width: 0;}
+}
+
+.button-container {
+	display: flex;
+	justify-content: space-evenly;
+}
