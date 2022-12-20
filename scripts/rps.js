@@ -64,17 +64,3 @@ const processRound = (roundResults) => {
                 console.log(`It's a ${roundResults}! ${pointsMessage}`);
         }
 }
-//Run the game 5 times
-const game = () => {
-        for (let i = 0; i < 5; i++) {
-                let computerChoice = getComputerChoice();
-                let playerChoice = getPlayerChoice();
-                let roundResults = playRound(playerChoice, computerChoice);
-                processRound(roundResults);
-                if (roundResults == 'Incorrect input') {i--, console.log(`Please enter Rock, Paper, or Scissors. Not ${playerChoice}.`)};
-        }
-//Report the winner.
-        reportWinner(playerScore, computerScore);
-        cleanUpGame();
-        return console.log('Thank you for playing :)');
-}
