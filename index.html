@@ -5,21 +5,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors Game</title>
-    <script src="./scripts/rps.js"></script>
+    <script src="./scripts/rps.js" defer></script>
     <link rel="stylesheet" href="./styles/main.css">
 </head>
 <body>
     <h1 class="rps-header hidden">Rock, Paper, Scissors!</h1>
     <p>First to score three points wins! Can you beat a computer?</p>
     <div class="button-container">
-        <div class="button-card rock">
+        <div class="button-card rock" id="rock-button">
             <div class="button rock"></div>
         </div>
-        <div class="button-card paper">
+        <div class="button-card paper" id="paper-button">
             <div class="button paper"></div>
         </div>
-        <div class="button-card scissors">
+        <div class="button-card scissors" id="scissors-button">
             <div class="button scissors"></div>
+        </div>
+    </div>
+    <div class="results-container">
+        <div class="running-points-container">
+            <p class="player-points">Human (You): 0 Points</p>
+            <p class="computer-points">Computer: 0 Points</p>
         </div>
     </div>
 </body>

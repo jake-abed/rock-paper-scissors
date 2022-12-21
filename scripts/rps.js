@@ -2,6 +2,9 @@
 //Establish global variables
 let playerScore = 0;
 let computerScore = 0;
+const rockButton = document.querySelector('#rock-button');
+const paperButton = document.querySelector('#paper-button');
+const scissorsButton = document.querySelector('#scissors-button');
 const RPS_ARRAY = ['rock', 'paper', 'scissors'];
 //Helper function to reset the game upon completion.
 const cleanUpGame = () => {
@@ -64,3 +67,7 @@ const processRound = (roundResults) => {
                 console.log(`It's a ${roundResults}! ${pointsMessage}`);
         }
 }
+
+rockButton.addEventListener('click', () => playRound('rock', getComputerChoice()));
+paperButton.addEventListener('click', () => playRound('paper', getComputerChoice()));
+scissorsButton.addEventListener('click', () => playRound('scissors', getComputerChoice()));
