@@ -69,7 +69,7 @@ const processRound = (roundResults) => {
         }
 	if (roundResults == 'lose') {
 		gameState.computerScore++;
-		roundResultsDisplay.innerText = `You ${roundResults} this`;
+		roundResultsDisplay.innerText = `You ${roundResults} this round!`;
 		playerScoreDisplay.innerText = `Human (You): ${gameState.playerScore} Points`;
 		compScoreDisplay.innerText = `Computer: ${gameState.computerScore} Points`;
 	}
