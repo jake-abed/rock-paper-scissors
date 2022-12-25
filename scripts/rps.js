@@ -81,5 +81,11 @@ const processRound = (roundResults) => {
 }
 
 rockButton.addEventListener('click', () => playRound('rock', getComputerChoice()));
+rockButton.addEventListener('click', () => rockButton.classList.add('chosen'));
+rockButton.addEventListener('animationend', () => rockButton.classList.remove('chosen'));
 paperButton.addEventListener('click', () => playRound('paper', getComputerChoice()));
+paperButton.addEventListener('click', () => paperButton.classList.add('chosen'));
+paperButton.addEventListener('animationend', () => paperButton.classList.remove('chosen'));
 scissorsButton.addEventListener('click', () => playRound('scissors', getComputerChoice()));
+scissorsButton.addEventListener('click', () => scissorsButton.classList.add('chosen'));
+scissorsButton.addEventListener('animationend', () => scissorsButton.classList.remove('chosen'));

@@ -9,6 +9,7 @@
 	margin: 3vh auto 1vh auto;
 	white-space: nowrap;
 	overflow: hidden;
+	font-size: 24px;
 	animation: type 2.5s steps(120, end);
 	width: min(95vw, 500px);
 }
@@ -35,6 +36,19 @@
 	gap: 2vh;
 	align-items: center;
 	border: 4px dashed #0FFF50;
+}
+
+@keyframes selectChoice {
+	0% {transform: scale(1);}
+	30% {transform: scale(1.03);}
+	80% {transform: scale(0.99);}
+	100% {transform: scale(1);}
+}
+
+.button-card.chosen {
+	animation-name: selectChoice;
+	animation-duration: 0.3s;
+	animation-timing-function: ease-in;
 }
 
 .button.rock {
