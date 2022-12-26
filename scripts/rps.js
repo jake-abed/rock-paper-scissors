@@ -10,6 +10,9 @@ const gameState = {
 const rockButton = document.querySelector('#rock-button');
 const paperButton = document.querySelector('#paper-button');
 const scissorsButton = document.querySelector('#scissors-button');
+const rockLogo = document.querySelector('#rock-logo');
+const paperLogo = document.querySelector('#paper-logo');
+const scissorsLogo = document.querySelector('#scissors-logo');
 const roundResultsDisplay = document.querySelector('.round-end-results');
 const gameResultsDisplay = document.querySelector('.game-end-results');
 const playerScoreDisplay = document.querySelector('.player-points');
@@ -21,7 +24,13 @@ const cleanUpGame = () => {
 	gameState.computerScore = 0;
 }
 //Helper function to get the Computer Choice
-const getComputerChoice = () => RPS_ARRAY[Math.floor(Math.random() * 3)];
+const getComputerChoice = () => {
+	const RPS_CHOICE = RPS_ARRAY[Math.floor(Math.random() * 3)];
+	if (RPS_CHOICE === 'rock') rockLogo.classList.add('comp-choice');
+	if (RPS_CHOICE === 'paper') paperLogo.classList.add('comp-choice');
+	if (RPS_CHOICE === 'scissors') scissorsLogo.classList.add('comp-choice');
+	return RPS_CHOICE;
+}
 //Helper function to play a round.
 const playRound = (getPlayerChoice, getComputerChoice) => {
 	if (gameState.gameOver) return console.log('The game is over. Please restart.');
@@ -83,9 +92,12 @@ const processRound = (roundResults) => {
 rockButton.addEventListener('click', () => playRound('rock', getComputerChoice()));
 rockButton.addEventListener('click', () => rockButton.classList.add('chosen'));
 rockButton.addEventListener('animationend', () => rockButton.classList.remove('chosen'));
+rockLogo.addEventListener('animationend', () => rockLogo.classList.remove('comp-choice'));
 paperButton.addEventListener('click', () => playRound('paper', getComputerChoice()));
 paperButton.addEventListener('click', () => paperButton.classList.add('chosen'));
 paperButton.addEventListener('animationend', () => paperButton.classList.remove('chosen'));
+paperLogo.addEventListener('animationend', () => paperLogo.classList.remove('comp-choice'));
 scissorsButton.addEventListener('click', () => playRound('scissors', getComputerChoice()));
 scissorsButton.addEventListener('click', () => scissorsButton.classList.add('chosen'));
 scissorsButton.addEventListener('animationend', () => scissorsButton.classList.remove('chosen'));
+scissorsLogo.addEventListener('animationend', () => scissorsLogo.classList.remove('comp-choice'));
