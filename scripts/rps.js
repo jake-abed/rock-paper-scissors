@@ -59,14 +59,9 @@ const playRound = (getPlayerChoice, getComputerChoice) => {
 //Helper function for reporting the winner.
 const reportWinner = (playerScore, computerScore) => {
 	const POINTS_MESSAGE = `Your score = ${playerScore}. Computer score = ${computerScore}.`;
-	if (playerScore < computerScore) {
-		gameResultsDisplay.innerText = `You lost! ${POINTS_MESSAGE}`;
-	}
-	if (playerScore > computerScore) {
-		gameResultsDisplay.innerText = `You won! ${POINTS_MESSAGE}`;
-	} else {
-		gameResultsDisplay.innerText =`It's a tie! ${POINTS_MESSAGE}`;
-	}
+	if (playerScore < computerScore) gameResultsDisplay.innerText = `You lost! ${POINTS_MESSAGE}`;
+	if (playerScore > computerScore) gameResultsDisplay.innerText = `You won! ${POINTS_MESSAGE}`;
+	if (playerScore == computerScore) gameResultsDisplay.innerText = `It's a tie! ${POINTS_MESSAGE}`;
 }
 //Helper function to process a round and update UI accordingly.
 const processRound = (roundResults) => {
@@ -86,6 +81,10 @@ const processRound = (roundResults) => {
 		roundResultsDisplay.innerText = `It's a ${roundResults} this round!`;
 		playerScoreDisplay.innerText = `Human (You): ${gameState.playerScore} Points`;
 		compScoreDisplay.innerText = `Computer: ${gameState.computerScore} Points`;
+	}
+	if (gameState.playerScore >= 3 || gameState.computerScore >= 3) {
+		gameState.gameOver = true;
+		reportWinner(gameState.playerScore, gameState.computerScore);
 	}
 }
 
