@@ -88,15 +88,30 @@ const processRound = (roundResults) => {
 	}
 }
 
-rockButton.addEventListener('click', () => playRound('rock', getComputerChoice()));
-rockButton.addEventListener('click', () => rockButton.classList.add('chosen'));
+const userChoiceMade = (rpsChoice) => {
+	if (gameState.gameOver) return console.error("GAME OVER! PLEASE STOP");
+	switch (rpsChoice) {
+		case 'rock':
+			playRound('rock', getComputerChoice());
+			rockButton.classList.add('chosen');
+			break;
+		case 'paper':
+			playRound('paper', getComputerChoice());
+			paperButton.classList.add('chosen');
+			break;
+		case 'scissors':
+			playRound('scissors', getComputerChoice());
+			scissorsButton.classList.add('chosen');
+			break;
+	}
+}
+
+rockButton.addEventListener('click', () => userChoiceMade('rock'));
 rockButton.addEventListener('animationend', () => rockButton.classList.remove('chosen'));
 rockLogo.addEventListener('animationend', () => rockLogo.classList.remove('comp-choice'));
-paperButton.addEventListener('click', () => playRound('paper', getComputerChoice()));
-paperButton.addEventListener('click', () => paperButton.classList.add('chosen'));
+paperButton.addEventListener('click', () => userChoiceMade('paper'));
 paperButton.addEventListener('animationend', () => paperButton.classList.remove('chosen'));
 paperLogo.addEventListener('animationend', () => paperLogo.classList.remove('comp-choice'));
-scissorsButton.addEventListener('click', () => playRound('scissors', getComputerChoice()));
-scissorsButton.addEventListener('click', () => scissorsButton.classList.add('chosen'));
+scissorsButton.addEventListener('click', () => userChoiceMade('scissors'));
 scissorsButton.addEventListener('animationend', () => scissorsButton.classList.remove('chosen'));
 scissorsLogo.addEventListener('animationend', () => scissorsLogo.classList.remove('comp-choice'));
