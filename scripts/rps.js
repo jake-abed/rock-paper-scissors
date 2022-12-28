@@ -65,24 +65,25 @@ const reportWinner = (playerScore, computerScore) => {
 }
 //Helper function to process a round and update UI accordingly.
 const processRound = (roundResults) => {
+	const CHOICE_MESSAGE = `You chose ${gameState.playerChoice} and the computer chose ${gameState.computerChoice}.`;
 	if (roundResults == 'win') {
 		gameState.playerScore++;
-		roundResultsDisplay.innerText = `You ${roundResults} this round!`;
+		roundResultsDisplay.innerText = `You ${roundResults} this round! ${CHOICE_MESSAGE}`;
 		playerScoreDisplay.innerText = `Human (You): ${gameState.playerScore} Points`;
 		compScoreDisplay.innerText = `Computer: ${gameState.computerScore} Points`;
         }
 	if (roundResults == 'lose') {
 		gameState.computerScore++;
-		roundResultsDisplay.innerText = `You ${roundResults} this round!`;
+		roundResultsDisplay.innerText = `You ${roundResults} this round! ${CHOICE_MESSAGE}`;
 		playerScoreDisplay.innerText = `Human (You): ${gameState.playerScore} Points`;
 		compScoreDisplay.innerText = `Computer: ${gameState.computerScore} Points`;
 	}
 	if (roundResults == 'tie') {
-		roundResultsDisplay.innerText = `It's a ${roundResults} this round!`;
+		roundResultsDisplay.innerText = `It's a ${roundResults} this round! ${CHOICE_MESSAGE}`;
 		playerScoreDisplay.innerText = `Human (You): ${gameState.playerScore} Points`;
 		compScoreDisplay.innerText = `Computer: ${gameState.computerScore} Points`;
 	}
-	if (gameState.playerScore >= 3 || gameState.computerScore >= 3) {
+	if (gameState.playerScore >= 5 || gameState.computerScore >= 5) {
 		gameState.gameOver = true;
 		reportWinner(gameState.playerScore, gameState.computerScore);
 	}
