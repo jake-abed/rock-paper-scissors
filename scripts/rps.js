@@ -17,11 +17,18 @@ const roundResultsDisplay = document.querySelector('.round-end-results');
 const gameResultsDisplay = document.querySelector('.game-end-results');
 const playerScoreDisplay = document.querySelector('.player-points');
 const compScoreDisplay = document.querySelector('.computer-points');
+const resultsContainerDisplay = document.querySelector('.results-container');
 const RPS_ARRAY = ['rock', 'paper', 'scissors'];
 //Helper function to reset the game upon completion.
 const cleanUpGame = () => {
 	gameState.playerScore = 0;
 	gameState.computerScore = 0;
+	gameState.gameOver = false;
+	gameResultsDisplay.innerText = '';
+	roundResultsDisplay.innerText = '';
+	playerScoreDisplay.innerText = `Human (You): ${gameState.playerScore} Points`;
+	compScoreDisplay.innerText = `Computer: ${gameState.computerScore} Points`;
+	document.querySelector('#reset-button').remove();
 }
 //Helper function to get the Computer Choice
 const getComputerChoice = () => {
@@ -37,8 +44,8 @@ const playRound = (getPlayerChoice, getComputerChoice) => {
 	gameState.playerChoice = getPlayerChoice;
 	gameState.computerChoice = getComputerChoice;
 	switch (getPlayerChoice) {
-        case 'rock':
-            if (getComputerChoice == 'scissors') return processRound('win');
+      case 'rock':
+      if (getComputerChoice == 'scissors') return processRound('win');
 			if (getComputerChoice == 'paper') return processRound('lose');
 			if (getComputerChoice == 'rock') return processRound('tie');
 			break;
@@ -59,7 +66,7 @@ const playRound = (getPlayerChoice, getComputerChoice) => {
 //Helper function for reporting the winner.
 const reportWinner = (playerScore, computerScore) => {
 	const POINTS_MESSAGE = `Your score = ${playerScore}. Computer score = ${computerScore}.`;
-	if (playerScore < computerScore) gameResultsDisplay.innerText = `You lost! ${POINTS_MESSAGE}`;
+	if (playerScore < computerScore) gameResultsDisplay.innerText = `You lost! Better luck next time. ${POINTS_MESSAGE}`;
 	if (playerScore > computerScore) gameResultsDisplay.innerText = `You won! ${POINTS_MESSAGE}`;
 	if (playerScore == computerScore) gameResultsDisplay.innerText = `It's a tie! ${POINTS_MESSAGE}`;
 }
@@ -86,11 +93,20 @@ const processRound = (roundResults) => {
 	if (gameState.playerScore >= 5 || gameState.computerScore >= 5) {
 		gameState.gameOver = true;
 		reportWinner(gameState.playerScore, gameState.computerScore);
+		return createResetButton();
 	}
 }
 
+const createResetButton = () => {
+	const newButton = document.createElement('div');
+	newButton.setAttribute('id', 'reset-button');
+	newButton.innerText = 'New Game?';
+	resultsContainerDisplay.appendChild(newButton);
+	document.getElementById('reset-button').addEventListener('click', cleanUpGame);
+}
+
 const userChoiceMade = (rpsChoice) => {
-	if (gameState.gameOver) return console.error("GAME OVER! PLEASE STOP");
+	if (gameState.gameOver) return console.log('Game is over.');
 	switch (rpsChoice) {
 		case 'rock':
 			playRound('rock', getComputerChoice());

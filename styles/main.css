@@ -1,5 +1,5 @@
 * {
-	font-family : Courier, sans-serif;
+	font-family : 'Anonymous Pro', sans-serif;
 	background-color: black;
 	color: #0FFF50;
 }
@@ -22,18 +22,19 @@
 	display: flex;
 	justify-content: center;
 	flex-wrap: wrap;
-	gap: 3vh;
+	gap: 3vw;
+	width: 60vw;
+	margin: 0 auto;
 }
 
 .button-card {
-	min-width: 150px;
-	width: min(275px, 30vw);
+	width: max(125px, 12vw);
 	aspect-ratio: 1 / 1;
 	flex: 0 0 auto;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	gap: 2vh;
+	gap: 1vh;
 	align-items: center;
 	border: 4px dashed #0FFF50;
 }
@@ -98,4 +99,16 @@
 
 body p {
 	text-align: center;
+}
+
+#reset-button {
+	margin: 0 auto;
+	max-width: max(200px, 10vw);
+	height: auto;
+	font-size: 24px;
+	font-weight: 700;
+	border: 4px dashed #0FFF50;
+	text-align: center;
+	padding: 1vh 2vw 1vh 2vw;
+	margin-bottom: 2vh;
 }
